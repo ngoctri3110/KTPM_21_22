@@ -1,6 +1,7 @@
 package com.se.springbootapi.controller;
 
 import com.se.springbootapi.entity.Employee;
+import com.se.springbootapi.error.EmployeeNotFoundException;
 import com.se.springbootapi.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
     @GetMapping("/employees/{id}")
-    public Employee getEmployeeById(@PathVariable("id") Long employeeId){
+    public Employee getEmployeeById(@PathVariable("id") Long employeeId) throws EmployeeNotFoundException {
         return employeeService.getEmployeeById(employeeId);
     }
 
